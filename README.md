@@ -3,12 +3,12 @@
 </p>
 
 ## Variables
-1. `API_ID` : Get from [my.telegram.org](https://my.telegram.org/)
-2. `API_HASH` : Get from [my.telegram.org](https://my.telegram.org)
-3. `BOT_TOKEN` : Your telegram bot token from [@BotFather](https://t.me/BotFather)
-4. `SESSION` : Generate from here [![GenerateStringName](https://img.shields.io/badge/repl.it-generateStringName-yellowgreen)](https://repl.it/@subinps/getStringName)
-5. `GROUPS` : ID of Groups (seperate by spaces)
-6. `ADMINS` : ID of Admins, messages from admins will not delete (seperate by spaces)
+1. `API_ID` : Get from [23258584)
+2. `API_HASH` : Get from [54764e9f109fe6902e35befeea7af8b4)
+3. `BOT_TOKEN` : Your telegram bot token from [8062633576:AAFJmT_um¶p3L-IhQcZt9CnaRAtea_pgmfXI)
+4. `SESSION` : Generate from here [![faizanq](mongodb+srv://faizanmark95:@faizanq.cnd6u.mongodb.net/?retryWrites=true&w=majority&appName=Faizanq)
+5. `GROUPS` : ID of Groups (-1002356132564)
+6. `ADMINS` : ID of Admins, messages from admins will not delete (6148004098)
 7. `TIME` : Time in seconds
 
 ### Make sure:
@@ -33,5 +33,4 @@ python3 bot.py
 
 
 ### Developer
-- [Vampire](https://t.me/KP51107)
-
+- [@IKD_mark)

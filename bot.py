@@ -14,7 +14,7 @@ ADMINS = []
 for usr in environ.get("ADMINS").split():
     ADMINS.append(int(usr))
 
-START_MSG = "<b>Hai {},\nI'm a private bot of @mh_world to delete group messages after a specific time</b>"
+START_MSG = "<b>Hai {},\nI'm a private bot of @CinemaxpressTM to delete group messages after a specific time</b>"
 
 
 User = Client(name="user-account",
@@ -49,13 +49,13 @@ async def delete(user, message):
        print(e)
        
 User.start()
-print("User Started!")
+print("User oombi 🖕🏿")
 Bot.start()
-print("Bot Started!")
+print("Bot oombi 🖕🏿")
 
 idle()
 
 User.stop()
-print("User Stopped!")
+print("User Stopped!😑")
 Bot.stop()
-print("Bot Stopped!")
+print("Bot Stopped!🥵")

@@ -1,6 +1,10 @@
 import asyncio
 from os import environ
 from pyrogram import Client, filters, idle
+from pyrogram import utils as pyroutils
+
+pyroutils.MIN_CHAT_ID = -999999999999
+pyroutils.MIN_CHANNEL_ID = -100999999999999
 
 API_ID = int(environ.get("API_ID"))
 API_HASH = environ.get("API_HASH")

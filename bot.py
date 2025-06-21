@@ -47,6 +47,11 @@ async def start_handler(bot, message):
     logging.info(f"/start from {message.from_user.id}")
     await message.reply(START_MSG.format(message.from_user.mention))
 
+@Bot.on_message(filters.private)
+async def debug_pm(bot, message):
+    print(f"📩 Got private message: {message.text} from {message.from_user.id}")
+    await message.reply("✅ I received your message!")
+
 @User.on_message(filters.chat(GROUPS))
 async def auto_delete(user, message):
     try:

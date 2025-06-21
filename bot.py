@@ -29,7 +29,7 @@ User = Client(SESSION,
               )
 
 
-Bot = Client(session_name="auto-delete",
+Bot = Client("auto-delete",
              api_id=API_ID,
              api_hash=API_HASH,
              bot_token=BOT_TOKEN,

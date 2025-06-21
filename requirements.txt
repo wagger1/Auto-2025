@@ -1,3 +1,5 @@
 Pyrogram
 Tgcrypto
 aiohttp
+flask
+waitress

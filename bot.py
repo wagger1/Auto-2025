@@ -80,5 +80,10 @@ async def main():
     logging.info("[✖] Bot session stopped")
 
 
+import threading
+from webcode import app
+from waitress import serve
+
 if __name__ == "__main__":
+    threading.Thread(target=lambda: serve(app, host="0.0.0.0", port=8000)).start()
     asyncio.run(main())

@@ -1,7 +1,11 @@
 import asyncio
+import logging
 from os import environ
 from pyrogram import Client, filters, idle
 from pyrogram import utils as pyroutils
+
+# === Logging ===
+logging.basicConfig(level=logging.INFO)
 
 # Adjust Pyrogram constants for group/channel ID handling
 pyroutils.MIN_CHAT_ID = -999999999999
@@ -15,7 +19,6 @@ BOT_TOKEN = environ.get("BOT_TOKEN")
 SESSION = environ.get("SESSION")
 TIME = int(environ.get("TIME"))
 
-# Load GROUPS and ADMINS from space-separated strings
 GROUPS = list(map(int, environ.get("GROUPS", "").split()))
 ADMINS = list(map(int, environ.get("ADMINS", "").split()))
 
@@ -38,12 +41,13 @@ Bot = Client(
     workers=300
 )
 
-# === Start Command ===
-@Bot.on_message(filters.command('start') & filters.private)
-async def start(bot, message):
+# === Handlers ===
+@Bot.on_message(filters.command("start") & filters.private)
+async def start_handler(bot, message):
+    logging.info(f"/start called by {message.from_user.id}")
     await message.reply(START_MSG.format(message.from_user.mention))
 
-# === Auto Delete Handler ===
+
 @User.on_message(filters.chat(GROUPS))
 async def auto_delete(user, message):
     try:
@@ -52,23 +56,29 @@ async def auto_delete(user, message):
         await asyncio.sleep(TIME)
         await Bot.delete_messages(chat_id=message.chat.id, message_ids=message.id)
     except Exception as e:
-        print(f"[ERROR] {e}")
+        logging.error(f"Error deleting message: {e}")
 
-# === Run Clients ===
+# === Run App ===
 async def main():
-    await User.start()
-    print("[✔] User session started")
+    try:
+        await User.start()
+        logging.info("[✔] User session started")
+    except Exception as e:
+        logging.error(f"[✖] User failed to start: {e}")
 
-    await Bot.start()
-    print("[✔] Bot session started")
+    try:
+        await Bot.start()
+        logging.info("[✔] Bot session started")
+    except Exception as e:
+        logging.error(f"[✖] Bot failed to start: {e}")
 
     await idle()
 
     await User.stop()
-    print("[✖] User session stopped")
-
+    logging.info("[✖] User session stopped")
     await Bot.stop()
-    print("[✖] Bot session stopped")
+    logging.info("[✖] Bot session stopped")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

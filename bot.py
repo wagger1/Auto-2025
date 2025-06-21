@@ -3,6 +3,13 @@ import logging
 from os import environ
 from pyrogram import Client, filters, idle
 from pyrogram import utils as pyroutils
+import threading
+from webcode import app
+from waitress import serve
+
+if __name__ == "__main__":
+    threading.Thread(target=lambda: serve(app, host="0.0.0.0", port=8000)).start()
+    asyncio.run(main())
 
 # === Logging ===
 logging.basicConfig(level=logging.INFO)
@@ -78,12 +85,3 @@ async def main():
     logging.info("[✖] User session stopped")
     await Bot.stop()
     logging.info("[✖] Bot session stopped")
-
-
-import threading
-from webcode import app
-from waitress import serve
-
-if __name__ == "__main__":
-    threading.Thread(target=lambda: serve(app, host="0.0.0.0", port=8000)).start()
-    asyncio.run(main())
